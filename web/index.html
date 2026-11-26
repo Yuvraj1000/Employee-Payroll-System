@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">Employee Payroll System</div>
+        <ul class="nav-links">
+            <li><a href="#dashboard" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#employees" onclick="showSection('employees')">Employees</a></li>
+            <li><a href="#add-employee" onclick="showSection('add-employee')">Add Employee</a></li>
+            <li><a href="#salary" onclick="showSection('salary')">Salary Calculator</a></li>
+            <li><a href="#payslip" onclick="showSection('payslip')">Pay Slip</a></li>
+            <li><a href="#payroll" onclick="showSection('payroll')">Payroll Records</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- ==================== Dashboard Section ==================== -->
+        <section id="dashboard" class="section active">
+            <h1>Dashboard</h1>
+            <p class="subtitle">Employee Payroll Management System — Admin Overview</p>
+
+            <div class="card-grid">
+                <div class="card card-blue">
+                    <div class="card-icon">👥</div>
+                    <div class="card-content">
+                        <h3>Total Employees</h3>
+                        <p class="card-value" id="total-employees">5</p>
+                    </div>
+                </div>
+                <div class="card card-green">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h3>Monthly Payroll</h3>
+                        <p class="card-value">Rs. 3,62,500.00</p>
+                    </div>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-icon">📋</div>
+                    <div class="card-content">
+                        <h3>Pay Slips Generated</h3>
+                        <p class="card-value">5</p>
+                    </div>
+                </div>
+                <div class="card card-purple">
+                    <div class="card-icon">🏢</div>
+                    <div class="card-content">
+                        <h3>Departments</h3>
+                        <p class="card-value">4</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Project Information</h3>
+                <table class="info-table">
+                    <tr><td><strong>Project</strong></td><td>Employee Payroll System</td></tr>
+                    <tr><td><strong>Project ID</strong></td><td>G12-JAVA-PID-23</td></tr>
+                    <tr><td><strong>Group</strong></td><td>G12</td></tr>
+                    <tr><td><strong>Team</strong></td><td>Yuvraj Singh, Hardik Chhabra, Ishant Goyal</td></tr>
+                    <tr><td><strong>Submitted to</strong></td><td>Mr. Rahul</td></tr>
+                    <tr><td><strong>Institution</strong></td><td>Chitkara University, Punjab</td></tr>
+                    <tr><td><strong>Backend</strong></td><td>Core Java</td></tr>
+                    <tr><td><strong>Frontend</strong></td><td>HTML + CSS</td></tr>
+                    <tr><td><strong>Data Storage</strong></td><td>CSV Files (Java File I/O)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ==================== Employee List Section ==================== -->
+        <section id="employees" class="section">
+            <h1>Employee Records</h1>
+            <p class="subtitle">View, search, and manage all employee records</p>
+
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search by name or department..." onkeyup="filterTable()">
+            </div>
+
+            <div class="table-container">
+                <table class="data-table" id="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Emp ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Designation</th>
+                            <th>Basic Salary (Rs.)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Yuvraj Singh</td>
+                            <td>Engineering</td>
+                            <td>Software Developer</td>
+                            <td>50,000.00</td>
+                            <td>
+                                <button class="btn btn-sm btn-view" onclick="viewSalary(1)">View Salary</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Hardik Chhabra</td>
+                            <td>Engineering</td>
+                            <td>Backend Developer</td>
+                            <td>48,000.00</td>
+                            <td>
+                                <button class="btn btn-sm btn-view" onclick="viewSalary(2)">View Salary</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ishant Goyal</td>
+                            <td>Finance</td>
+                            <td>Accounts Manager</td>
+                            <td>55,000.00</td>
+                            <td>
+                                <button class="btn btn-sm btn-view" onclick="viewSalary(3)">View Salary</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Priya Sharma</td>
+                            <td>HR</td>
+                            <td>HR Executive</td>
+                            <td>42,000.00</td>
+                            <td>
+                                <button class="btn btn-sm btn-view" onclick="viewSalary(4)">View Salary</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Rahul Kumar</td>
+                            <td>Marketing</td>
+                            <td>Marketing Analyst</td>
+                            <td>55,000.00</td>
+                            <td>
+                                <button class="btn btn-sm btn-view" onclick="viewSalary(5)">View Salary</button>
+                                <button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ==================== Add Employee Section ==================== -->
+        <section id="add-employee" class="section">
+            <h1>Add New Employee</h1>
+            <p class="subtitle">Fill in the details to add a new employee to the system</p>
+
+            <div class="form-container">
+                <form id="employee-form" onsubmit="addEmployeeToTable(event)">
+                    <div class="form-group">
+                        <label for="emp-name">Employee Name <span class="required">*</span></label>
+                        <input type="text" id="emp-name" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emp-dept">Department <span class="required">*</span></label>
+                            <select id="emp-dept" required>
+                                <option value="">Select Department</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Finance">Finance</option>
+                                <option value="HR">HR</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-designation">Designation <span class="required">*</span></label>
+                            <input type="text" id="emp-designation" placeholder="Enter designation" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emp-salary">Basic Salary (Rs.) <span class="required">*</span></label>
+                        <input type="number" id="emp-salary" placeholder="Enter basic salary" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Employee</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- ==================== Salary Calculator Section ==================== -->
+        <section id="salary" class="section">
+            <h1>Salary Calculator</h1>
+            <p class="subtitle">Calculate gross salary, deductions, and net salary from basic salary</p>
+
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="calc-basic">Enter Basic Salary (Rs.)</label>
+                    <input type="number" id="calc-basic" placeholder="e.g., 50000" min="0" step="0.01">
+                </div>
+                <button class="btn btn-primary" onclick="calculateSalaryBreakdown()">Calculate</button>
+            </div>
+
+            <div id="salary-result" class="result-container" style="display:none;">
+                <h2>Salary Breakdown</h2>
+                <div class="salary-grid">
+                    <div class="salary-section">
+                        <h3 class="section-heading earnings">Earnings</h3>
+                        <table class="salary-table">
+                            <tr><td>Basic Salary</td><td class="amount" id="res-basic">-</td></tr>
+                            <tr><td>HRA (20%)</td><td class="amount" id="res-hra">-</td></tr>
+                            <tr><td>DA (15%)</td><td class="amount" id="res-da">-</td></tr>
+                            <tr><td>Other Allowance (10%)</td><td class="amount" id="res-other">-</td></tr>
+                            <tr class="total-row"><td><strong>Gross Salary</strong></td><td class="amount" id="res-gross"><strong>-</strong></td></tr>
+                        </table>
+                    </div>
+                    <div class="salary-section">
+                        <h3 class="section-heading deductions">Deductions</h3>
+                        <table class="salary-table">
+                            <tr><td>Provident Fund (12% of Basic)</td><td class="amount" id="res-pf">-</td></tr>
+                            <tr><td>Professional Tax (5% of Gross)</td><td class="amount" id="res-tax">-</td></tr>
+                            <tr class="total-row"><td><strong>Total Deductions</strong></td><td class="amount" id="res-deductions"><strong>-</strong></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="net-salary-box">
+                    <h2>Net Salary (Take-Home): <span id="res-net">-</span></h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Pay Slip Section ==================== -->
+        <section id="payslip" class="section">
+            <h1>Employee Pay Slip</h1>
+            <p class="subtitle">View detailed salary slip for an employee</p>
+
+            <div class="payslip-container">
+                <div class="payslip">
+                    <div class="payslip-header">
+                        <h2>SALARY SLIP</h2>
+                        <p>Chitkara University — Employee Payroll System</p>
+                    </div>
+
+                    <div class="payslip-info">
+                        <div class="payslip-info-row">
+                            <span><strong>Employee ID:</strong> 1</span>
+                            <span><strong>Pay Period:</strong> November 2026</span>
+                        </div>
+                        <div class="payslip-info-row">
+                            <span><strong>Name:</strong> Yuvraj Singh</span>
+                            <span><strong>Department:</strong> Engineering</span>
+                        </div>
+                        <div class="payslip-info-row">
+                            <span><strong>Designation:</strong> Software Developer</span>
+                        </div>
+                    </div>
+
+                    <div class="payslip-body">
+                        <div class="payslip-column">
+                            <h3>Earnings</h3>
+                            <table>
+                                <tr><td>Basic Salary</td><td class="amount">Rs. 50,000.00</td></tr>
+                                <tr><td>HRA (20%)</td><td class="amount">Rs. 10,000.00</td></tr>
+                                <tr><td>DA (15%)</td><td class="amount">Rs. 7,500.00</td></tr>
+                                <tr><td>Other Allowance (10%)</td><td class="amount">Rs. 5,000.00</td></tr>
+                                <tr class="total-row"><td><strong>Gross Salary</strong></td><td class="amount"><strong>Rs. 72,500.00</strong></td></tr>
+                            </table>
+                        </div>
+                        <div class="payslip-column">
+                            <h3>Deductions</h3>
+                            <table>
+                                <tr><td>Provident Fund (12%)</td><td class="amount">Rs. 6,000.00</td></tr>
+                                <tr><td>Professional Tax (5%)</td><td class="amount">Rs. 3,625.00</td></tr>
+                                <tr class="total-row"><td><strong>Total Deductions</strong></td><td class="amount"><strong>Rs. 9,625.00</strong></td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="payslip-footer">
+                        <div class="net-salary-display">
+                            <strong>NET SALARY (Take-Home):</strong>
+                            <span class="net-amount">Rs. 62,875.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Payroll Records Section ==================== -->
+        <section id="payroll" class="section">
+            <h1>Monthly Payroll Records</h1>
+            <p class="subtitle">November 2026 — Monthly payroll summary for all employees</p>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Emp ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Basic (Rs.)</th>
+                            <th>Gross (Rs.)</th>
+                            <th>Deductions (Rs.)</th>
+                            <th>Net Salary (Rs.)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Yuvraj Singh</td>
+                            <td>Engineering</td>
+                            <td>50,000.00</td>
+                            <td>72,500.00</td>
+                            <td>9,625.00</td>
+                            <td>62,875.00</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Hardik Chhabra</td>
+                            <td>Engineering</td>
+                            <td>48,000.00</td>
+                            <td>69,600.00</td>
+                            <td>9,240.00</td>
+                            <td>60,360.00</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ishant Goyal</td>
+                            <td>Finance</td>
+                            <td>55,000.00</td>
+                            <td>79,750.00</td>
+                            <td>10,587.50</td>
+                            <td>69,162.50</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Priya Sharma</td>
+                            <td>HR</td>
+                            <td>42,000.00</td>
+                            <td>60,900.00</td>
+                            <td>8,085.00</td>
+                            <td>52,815.00</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Rahul Kumar</td>
+                            <td>Marketing</td>
+                            <td>55,000.00</td>
+                            <td>79,750.00</td>
+                            <td>10,587.50</td>
+                            <td>69,162.50</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="footer-total">
+                            <td colspan="3"><strong>TOTAL (5 Employees)</strong></td>
+                            <td><strong>2,50,000.00</strong></td>
+                            <td><strong>3,62,500.00</strong></td>
+                            <td><strong>48,125.00</strong></td>
+                            <td><strong>3,14,375.00</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Employee Payroll System &copy; 2026 | G12-JAVA-PID-23 | Chitkara University, Punjab</p>
+        <p>Developed by: Yuvraj Singh, Hardik Chhabra, Ishant Goyal | Submitted to: Mr. Rahul</p>
+    </footer>
+
+    <script>
+        // ==================== Section Navigation ====================
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update nav active state
+            document.querySelectorAll('.nav-links a').forEach(function(link) {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // ==================== Search / Filter Table ====================
+        function filterTable() {
+            var input = document.getElementById('search-input').value.toLowerCase();
+            var table = document.getElementById('employee-table');
+            var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+            for (var i = 0; i < rows.length; i++) {
+                var name = rows[i].cells[1].textContent.toLowerCase();
+                var dept = rows[i].cells[2].textContent.toLowerCase();
+                if (name.indexOf(input) > -1 || dept.indexOf(input) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        // ==================== Add Employee to Table ====================
+        function addEmployeeToTable(event) {
+            event.preventDefault();
+            var name = document.getElementById('emp-name').value;
+            var dept = document.getElementById('emp-dept').value;
+            var designation = document.getElementById('emp-designation').value;
+            var salary = parseFloat(document.getElementById('emp-salary').value);
+
+            var table = document.getElementById('employee-table').getElementsByTagName('tbody')[0];
+            var rowCount = table.rows.length + 1;
+
+            var newRow = table.insertRow();
+            newRow.innerHTML =
+                '<td>' + rowCount + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + dept + '</td>' +
+                '<td>' + designation + '</td>' +
+                '<td>' + salary.toLocaleString('en-IN', {minimumFractionDigits: 2}) + '</td>' +
+                '<td>' +
+                    '<button class="btn btn-sm btn-view" onclick="viewSalary(' + rowCount + ')">View Salary</button> ' +
+                    '<button class="btn btn-sm btn-delete" onclick="deleteRow(this)">Delete</button>' +
+                '</td>';
+
+            document.getElementById('employee-form').reset();
+            alert('Employee "' + name + '" added successfully!');
+        }
+
+        // ==================== Delete Row ====================
+        function deleteRow(btn) {
+            if (confirm('Are you sure you want to delete this employee?')) {
+                var row = btn.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        }
+
+        // ==================== Salary Calculator ====================
+        function calculateSalaryBreakdown() {
+            var basic = parseFloat(document.getElementById('calc-basic').value);
+            if (isNaN(basic) || basic < 0) {
+                alert('Please enter a valid basic salary.');
+                return;
+            }
+
+            // Allowances
+            var hra = basic * 0.20;
+            var da = basic * 0.15;
+            var other = basic * 0.10;
+            var gross = basic + hra + da + other;
+
+            // Deductions
+            var pf = basic * 0.12;
+            var tax = gross * 0.05;
+            var totalDeductions = pf + tax;
+            var net = gross - totalDeductions;
+
+            // Format as currency
+            function fmt(val) {
+                return 'Rs. ' + val.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+
+            document.getElementById('res-basic').textContent = fmt(basic);
+            document.getElementById('res-hra').textContent = fmt(hra);
+            document.getElementById('res-da').textContent = fmt(da);
+            document.getElementById('res-other').textContent = fmt(other);
+            document.getElementById('res-gross').innerHTML = '<strong>' + fmt(gross) + '</strong>';
+            document.getElementById('res-pf').textContent = fmt(pf);
+            document.getElementById('res-tax').textContent = fmt(tax);
+            document.getElementById('res-deductions').innerHTML = '<strong>' + fmt(totalDeductions) + '</strong>';
+            document.getElementById('res-net').textContent = fmt(net);
+
+            document.getElementById('salary-result').style.display = 'block';
+        }
+
+        // ==================== View Salary (placeholder) ====================
+        function viewSalary(empId) {
+            showSection('salary');
+            // In a full implementation, this would populate with the employee's basic salary
+            alert('Navigate to Salary Calculator for Employee ID: ' + empId);
+        }
+    </script>
+
+</body>
+</html>

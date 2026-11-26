@@ -1,0 +1,6 @@
+empId,empName,department,designation,month,year,basic,hra,da,otherAllowance,gross,pf,tax,totalDeductions,net
+1,Yuvraj Singh,Engineering,Software Developer,November,2026,50000.00,10000.00,7500.00,5000.00,72500.00,6000.00,3625.00,9625.00,62875.00
+2,Hardik Chhabra,Engineering,Backend Developer,November,2026,48000.00,9600.00,7200.00,4800.00,69600.00,5760.00,3480.00,9240.00,60360.00
+3,Ishant Goyal,Finance,Accounts Manager,November,2026,55000.00,11000.00,8250.00,5500.00,79750.00,6600.00,3987.50,10587.50,69162.50
+4,Priya Sharma,HR,HR Executive,November,2026,42000.00,8400.00,6300.00,4200.00,60900.00,5040.00,3045.00,8085.00,52815.00
+5,Rahul Kumar,Marketing,Marketing Analyst,November,2026,55000.00,11000.00,8250.00,5500.00,79750.00,6600.00,3987.50,10587.50,69162.50
